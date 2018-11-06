@@ -1,0 +1,19 @@
+{
+  "name": "startapp",
+  "version": "1.0.0",
+  "description": "this is my first react flask app with codeburst",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kwura/employee-referral-system.git"
+  },
+  "author": "kwura",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kwura/employee-referral-system/issues"
+  },
+  "homepage": "https://github.com/kwura/employee-referral-system#readme"
+}
