@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/kwura/employee-referral-system/issues"
   },
-  "homepage": "https://github.com/kwura/employee-referral-system#readme"
+  "homepage": "https://github.com/kwura/employee-referral-system#readme",
+  "devDependencies": {
+    "webpack": "^4.25.1"
+  }
 }
