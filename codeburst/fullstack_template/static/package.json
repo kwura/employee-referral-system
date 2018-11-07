@@ -1,11 +1,22 @@
 {
-  "name": "startapp",
+  "name": "fullstacktemplate",
   "version": "1.0.0",
-  "description": "this is my first react flask app with codeburst",
+  "description": "A template for creating a full stack web app using python, NPM, Webpack, and React",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack -p --progress --config webpack.config.js",
+    "dev-build": "webpack --progress -d --config webpack.config.js",
+    "watch": "webpack --progress -d --config webpack.config.js --watch"
   },
+  "keywords": [
+	  "fullstack",
+	  "template",
+	  "python",
+	  "react",
+	  "npm",
+	  "webpack"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kwura/employee-referral-system.git"
