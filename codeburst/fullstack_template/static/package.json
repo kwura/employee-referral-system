@@ -10,13 +10,19 @@
     "watch": "webpack --progress -d --config webpack.config.js --watch"
   },
   "keywords": [
-	  "fullstack",
-	  "template",
-	  "python",
-	  "react",
-	  "npm",
-	  "webpack"
+    "fullstack",
+    "template",
+    "python",
+    "react",
+    "npm",
+    "webpack"
   ],
+  "babel": {
+	  "presets": [
+		  "es2018",
+		  "react"
+	  ]
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kwura/employee-referral-system.git"
@@ -28,6 +34,11 @@
   },
   "homepage": "https://github.com/kwura/employee-referral-system#readme",
   "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.4",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-es2018": "^1.0.0",
+    "babel-preset-react": "^6.24.1",
     "webpack": "^4.25.1"
   }
 }
