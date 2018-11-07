@@ -1,44 +1,14 @@
 {
-  "name": "fullstacktemplate",
+  "name": "webapp",
   "version": "1.0.0",
-  "description": "A template for creating a full stack web app using python, NPM, Webpack, and React",
+  "description": "first webapp",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack -p --progress --config webpack.config.js",
-    "dev-build": "webpack --progress -d --config webpack.config.js",
-    "watch": "webpack --progress -d --config webpack.config.js --watch"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [
-    "fullstack",
-    "template",
-    "python",
-    "react",
-    "npm",
-    "webpack"
-  ],
-  "babel": {
-	  "presets": [
-		  "es2018",
-		  "react"
-	  ]
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/kwura/employee-referral-system.git"
-  },
-  "author": "kwura",
+  "author": "",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/kwura/employee-referral-system/issues"
-  },
-  "homepage": "https://github.com/kwura/employee-referral-system#readme",
   "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-loader": "^8.0.4",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-es2018": "^1.0.0",
-    "babel-preset-react": "^6.24.1",
     "webpack": "^4.25.1"
   }
 }
