@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="/CSS/home.css">
+
+<link href="https://fonts.googleapis.com/css?family=Archivo+Black|Pacifico" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!--  https://www.w3schools.com/jquery/tryit.asp?filename=tryjquery_hide_show-->
+<script>
+$(document).ready(function(){
+    $(".hide").click(function(){
+        $("div.toshow").hide();
+    });
+    $(".show").click(function(){
+        $("div.toshow").show();
+    });
+    $("#hideprof").click(function(){
+        $("div.toshowprof").hide();
+    });
+    $("#showprof").click(function(){
+        $("div.toshowprof").show();
+    });
+});
+</script>
+
+	<title>Hey This is Our Fitness App</title>
+</head>
+<body>
+
+<div class="bg">
+<!-- Navbar [START] -->
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">FitMe</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/feed">Feed <span class="sr-only">(current)</span></a>
+            </li>        
+            <li class="nav-item active">
+              <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
+            </li>        
+            <li class="nav-item active">
+              <a class="nav-link" href="/browse">Browse <span class="sr-only">(current)</span></a>
+            </li>      
+          </ul>
+          <form class="form-inline my-2 my-lg-0" action="/search/" method="get">
+            <input class="form-control mr-sm-2" type="search" name="query_string" placeholder="Search a Specific Tag" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+          <a href= "{{ url|safe }}"><button class="btn btn-outline-danger my-2 my-sm-0 " type="submit">{{ url_linktext }}</button></a>
+
+        </div>
+      </nav>
+
+<!-- Navbar [END] -->
+<br>
+<!-- HOME PAGE START -->
+<div class="container">
+
+  <div class="container button-box">
+
+            <!-- Management Button -->
+
+    <form id="updateForm" action="/management" method="get">
+      <div><input type="submit" class="btn btn-large btn-primary specialbtn" value="Management"></div>
+    </form>
+
+            <!-- Create a New Post Button -->
+
+    <form action="/createnewreport" method="get">
+      <div id="submit"><input type="submit" class="theextra btn btn-large btn-primary specialbtn" value="Create a New Post"></div>
+    </form>
+
+            <!-- Create a new theme -->
+      <form action="/createnewtheme" method="get">
+      <div id="submit"><input type="submit" class="theextra btn btn-large btn-primary specialbtn" value="Create a New Fitness Topic"></div>
+      </form>
+
+          <!-- Change Username -->
+      <form action="/changeusername" method="get">
+      <div id="submit"><input type="submit" class="theextra btn btn-large btn-primary specialbtn" value="Change Username"></div>
+      </form>
+
+
+  </div>
+  <br>
+  <br>
+  <br>
+
+  <div class="jumbotron" id="jumboz">
+
+    <h1>{{ check_athlete.user_name }}</h1>
+
+            <!-- Profile Picture Options Button -->
+      <div id="submit"><div id="showprof"><input type="submit" class="btn btn-large btn-primary specialbtn" value="{{ upload_img_button_text }}"></div></div>
+
+            <!-- Cancel Hidden Button -->
+            <div class="toshowprof" id="hideprof"><input type="submit" name="Send" value="Cancel" ></div>
+            <br>
+
+
+  <!-- Profile Pic itself -->
+  <img src="{{ profile_pic_url }}" class="img-circle" alt="No Profile Picture!" height="266">
+
+  <!-- Profile Picture Upload Button -->
+  <form action="{{ upload_url }}" enctype="multipart/form-data" method="post">
+    <div class="form-group">
+        <div class="input-group toshowprof">
+            <input type="file" name="img">
+        </div>
+    </div>
+    <div class="toshowprof"><input type="submit" name="Send" value="Update Pic" ></div>
+  </form>
+  <br>
+
+  <!-- This is where profile description goes -->
+  <div>
+    <blockquote class="subtext">
+    {{ profile_description }}
+    </blockquote>
+  </div>
+  <!-- Edit Description Button -->
+  <tr><button class="show">Edit Description</button>
+      <!-- Hidden Cancel Button -->
+    <div class="toshow"><button class="hide">Cancel</button></div></tr>
+
+    <form action="/home" method="post">
+      <div class="toshow"><input type="submit" value="Submit" ></div>
+            <!-- jquery logic to hide option to edit description -->
+      <div class="toshow"><p> <textarea name="description" style = "width: 1000px"></textarea>
+      </p>
+      </div>
+    </form>
+
+</div>
+
+</div>
+<!-- HOME PAGE END -->
+
+</div>
+<!-- Bootstrap scripts -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous">
+
+</script>
+</body>
+</html>

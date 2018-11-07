@@ -1,0 +1,48 @@
+.btn{
+	margin-left: 10px;
+  margin-top: 10px;
+
+}
+
+.specialbtn{
+	margin-left: -15px;
+}
+
+nav
+{
+   position: fixed;
+   top: 0px;
+}
+
+body, html {
+    height: 100%;
+}
+.bg {
+    /* The image used source https://unsplash.com/photos/comjArgHF4Y*/
+    background-image: url("https://images.unsplash.com/photo-1533756972958-d6f38a9761e3?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=d710493bc1818842db8ce47f887708f2&auto=format&fit=crop&w=2378&q=80");
+
+    /* Full height */
+    height: 100%;
+
+    /* Center and scale the image */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+
+  #jumboz{
+  		 margin-top: 15px;
+       background: rgba(255, 255, 255, 0.6); 
+
+  }
+
+  .subtext {
+	font-family: 'Archivo Black', sans-serif;
+	/*text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;*/
+
+}
+
+.toshow{
+	display: none;
+}

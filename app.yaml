@@ -1,0 +1,45 @@
+# app.yaml isbasically configuration file that tells appengine how our app will behave
+
+# application id used by google sdk to identify the different apps we might run
+# application: test-app
+# What version of python we will be using
+runtime: python27
+api_version: 1
+threadsafe: true
+
+
+
+
+# [START handlers]
+# handlers is the section that defines which requests are processed by which scripts 
+handlers:
+# this is just a static file that contains an icon
+# - url: /favicon\.ico
+#   static_files: favicon.ico
+#   upload: favicon\.ico
+
+# - url: /bootstrap
+#   static_dir: bootstrap
+- url: /CSS
+  static_dir: CSS
+
+- url: /.*
+  script: main3.app
+# [END handlers]
+
+# [START libraries]
+libraries:
+- name: webapp2
+  version: latest
+  
+# - name: psycopg2
+#   version: latest
+
+- name: PIL
+  version: latest
+
+# - name: logging
+#   version: latest
+- name: jinja2
+  version: latest
+# [END libraries]

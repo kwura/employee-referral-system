@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="/CSS/home.css">
+
+<link href="https://fonts.googleapis.com/css?family=Archivo+Black|Pacifico" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!--  https://www.w3schools.com/jquery/tryit.asp?filename=tryjquery_hide_show-->
+<script>
+$(document).ready(function(){
+    $(".hide").click(function(){
+        $("div.toshow").hide();
+    });
+    $(".show").click(function(){
+        $("div.toshow").show();
+    });
+    $("#hideprof").click(function(){
+        $("div.toshowprof").hide();
+    });
+    $("#showprof").click(function(){
+        $("div.toshowprof").show();
+    });
+});
+</script>
+
+	<title>Hey This is Our Fitness App</title>
+</head>
+<body>
+
+<div class="bg">
+<!-- Navbar [START] -->
+      <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <a class="navbar-brand" href="#">FitMe</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/feed">Feed <span class="sr-only">(current)</span></a>
+            </li>        
+            <li class="nav-item active">
+              <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
+            </li>        
+            <li class="nav-item active">
+              <a class="nav-link" href="/browse">Browse <span class="sr-only">(current)</span></a>
+            </li>      
+          </ul>
+          <form class="form-inline my-2 my-lg-0" action="/search/" method="get">
+            <input class="form-control mr-sm-2" type="search" name="query_string" placeholder="Search a Specific Tag" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+          <a href= "{{ url|safe }}"><button class="btn btn-outline-danger my-2 my-sm-0 " type="submit">{{ url_linktext }}</button></a>
+
+        </div>
+      </nav>
+
+<!-- Navbar [END] -->
+
+<!-- Browse PAGE START -->
+<div class="ReadableText">
+    <h1 id="topheader2">Browsing All Fitness Topics</h1>
+    <hr>
+  <div id="content" class="centered container paddingfix">
+    <!-- Start of Jinja Logic for each theme! -->
+    {% for theme in themes %}
+      <figure class="figure">
+        <figcaption class="figure-caption">
+          <!-- clickable theme button -->
+          <form action="/viewtheme" method="get"><button class="btn btn-link ReadableText" type="submit" name="view_theme_name" value="{{ theme.name }}"><span id="themefont">{{ theme.name }}</span></button> 
+          <input type="hidden" name="previouslink" value="{{ path_qs }}">
+          </form>
+          <br>
+          <br>
+          <br>
+
+        </figcaption>
+        <img src="{{ theme.cover_pic_url }}" class="figure-img img-fluid rounded">
+        <figcaption class="figure-caption">Description: {{ theme.description }}</figcaption>
+      </figure>
+      <br>
+    
+        <form action="/subscriptions" method="post">
+          <!-- hidden input indicating what page this came from -->
+          <input type="hidden" name="page" value="{{ path_qs }}">
+          <input type="hidden" name="theme_name" value="{{ theme.name }}">
+
+          <!-- jinja logic for subscriptions -->
+          {% if theme.name in current_athlete.subs %}
+          <input style="margin-left: 5px" type="submit" name="subbutton" value="Unsubscribe">
+
+          {% else %}
+          <input style="margin-left: 5px" type="submit" name="subbutton" value="Subscribe">
+          {% endif %}
+
+        </form>
+
+        <br>
+        <br>
+        <hr>
+      {% endfor %}
+  </div>
+</div>
+<!-- Browse PAGE END -->
+
+</div>
+<!-- Bootstrap scripts -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous">
+
+</script>
+</body>
+</html>

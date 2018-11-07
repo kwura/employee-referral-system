@@ -1,0 +1,165 @@
+.btn{
+	margin-left: 10px;
+  margin-top: 10px;
+
+}
+
+.specialbtn{
+	margin-left: -15px;
+
+}
+
+nav
+{
+   position: fixed;
+   top: 0px;
+}
+
+
+body, html {
+    height: 100%;
+    padding: 0;
+    margin: 0px auto;
+    margin-bottom: 20px;
+}
+
+body {
+  /* The image used source https://unsplash.com/photos/comjArgHF4Y*/
+    background-image: url(https://images.unsplash.com/photo-1517816743773-6e0fd518b4a6?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=4a41b5c0a117d8755515651254366c7a&auto=format&fit=crop&w=1950&q=80);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+}
+.bg {
+    /* The image used source https://unsplash.com/photos/comjArgHF4Y
+    /*background-image: url("https://images.unsplash.com/photo-1533756972958-d6f38a9761e3?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=d710493bc1818842db8ce47f887708f2&auto=format&fit=crop&w=2378&q=80");*/
+
+    /* Full height */
+    height: 100%;
+
+    /* Center and scale the image */
+    /*background-position: center;*/
+/*    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;*/
+
+    /*https://stackoverflow.com/questions/32417663/white-area-on-fixed-background-when-scrolling-on-ios*/
+    /*transform: translate3d(0,0,0);*/
+  }
+
+  #jumboz{
+  		 margin-top: 15px;
+       background: rgba(255, 255, 255, 0.6); 
+
+  }
+
+  .subtext {
+	font-family: 'Archivo Black', sans-serif;
+	/*text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;*/
+
+}
+
+.toshow, .toshowprof{
+	display: none;
+}
+
+form{
+	float: left;
+}
+
+form#updateForm{
+	clear: right;
+	margin-right: 20px;
+}
+
+.theextra{
+    clear: right;
+  margin-right: 20px;
+}
+
+div#submit{
+	clear: both;
+}
+
+#profile_button{
+	margin-bottom: 20px;
+}
+
+#hideprof{
+	margin-top: 10px
+}
+
+.ReadableText, .figure-caption{
+  font-family: 'Archivo Black', sans-serif;
+  color: #ffffff;
+  text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000; 
+}
+
+#themefont{
+  font-family: 'Pacifico', sans-serif;
+  color: red;
+  text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000; 
+}
+
+img{
+  max-height: 200px;
+  min-width: 200px;
+}
+
+img#prof{
+  max-height: 100px;
+  max-width: 100px;
+  min-height: 100px;
+  min-width: 100px;
+}
+
+.btn-link{
+  margin-left: 0px;
+
+}
+
+/*stackoverflow scrolling*/
+
+#topheader{
+  width: 100%;
+  /*height: 245px;*/
+  margin-left: 330px;
+  overflow: hidden;
+}
+
+#topheader2{
+  width: 100%;
+  height: 140px;
+  margin-left: 100px;
+  margin-top: 100px;
+  overflow: hidden;
+}
+
+#formheader{
+  margin-left: 320px;
+}
+
+#content{
+  height: 650px;
+  /*position: fixed;*/
+  /*padding: 20px;*/
+  margin-left: 230px;
+  margin-right: 20px;
+  padding-bottom: 30px;
+  padding-right: auto;
+  overflow: auto;
+
+}
+
+#themeview{
+  margin-left: 320px;
+}

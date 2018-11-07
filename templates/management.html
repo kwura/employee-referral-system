@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="/CSS/home.css">
+
+<link href="https://fonts.googleapis.com/css?family=Archivo+Black|Pacifico" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+<!-- https://www.w3schools.com/howto/howto_css_split_screen.asp -->
+<style type="text/css">
+  /* Split the screen in half */
+.split {
+  height: 100%;
+  width: 50%;
+  position: fixed;
+  z-index: 1;
+  top: 50px;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+/* Control the left side */
+.left {
+  left: 0;
+}
+
+/* Control the right side */
+.right {
+  right: 0;
+}
+
+/* If you want the content centered horizontally and vertically */
+.centered {
+  position: absolute;
+  margin-top: 10%;
+  top: 15%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+/* Style the image inside the centered container, if needed */
+/*Source: https://stackoverflow.com/questions/12991351/css-force-image-resize-and-keep-aspect-ratio*/
+/*img {
+  display: block;
+  max-width:230px;
+  max-height:95px;
+  width: auto;
+  height: auto;
+  margin-left: 30%;
+}*/
+/*.centered img {
+  width: 150px;
+  border-radius: 50%;
+}*/
+</style>
+	<title>Hey This is Our Fitness App</title>
+</head>
+<body>
+
+<div class="bg">
+<!-- Navbar [START] -->
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">FitMe</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/feed">Feed <span class="sr-only">(current)</span></a>
+            </li>        
+            <li class="nav-item active">
+              <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
+            </li>        
+            <li class="nav-item active">
+              <a class="nav-link" href="/browse">Browse <span class="sr-only">(current)</span></a>
+            </li>      
+          </ul>
+          <form class="form-inline my-2 my-lg-0" action="/search/" method="get">
+            <input class="form-control mr-sm-2" type="search" name="query_string" placeholder="Search a Specific Tag" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+          <a href= "{{ url|safe }}"><button class="btn btn-outline-danger my-2 my-sm-0 " type="submit">{{ url_linktext }}</button></a>
+
+        </div>
+      </nav>
+
+<!-- Navbar [END] -->
+
+<!-- Manage PAGE START https://www.w3schools.com/howto/howto_css_split_screen.asp--> 
+  <!-- Left Side of Page My Posts -->
+<div class="ReadableText">
+<div class="container split left">
+  <div class="centered">
+    <img src="" alt="">
+    <h3 style="color: red; margin-top: 200px;">{{ no_reports_error }}</h3>
+    <h2>My Posts</h2>
+      <figure class="figure">
+        <img src="{{ image_url }}" class="figure-img img-fluid rounded">
+        <figcaption class="figure-caption">Theme: {{ theme_name }}</figcaption>
+        <figcaption class="figure-caption">Date: {{ date }}</figcaption>
+        <figcaption class="figure-caption">Caption: {{ caption }}</figcaption>
+      </figure>
+      <br>
+        <form action="/management" method="post">
+          <!-- hidden input indicating myposts -->
+          <input type="hidden" name="section" value="myposts">
+          <input type="hidden" name="iteration" value="{{ iteration }}">
+          <input type="hidden" name="sub_iteration" value="{{ sub_iteration }}">
+
+          <!-- jinja logic for previous button if its not first iteration -->
+          {% if not_first == true %}
+          <input style="margin-left: 5px" type="submit" name="iterationbutton" value="Previous">
+          {% endif %}
+
+          {% if not_last == true %}
+          <input style="margin-left: 5px" type="submit" name="iterationbutton" value="Next">
+          {% endif %}
+
+        </form>
+        <br>
+        <br>
+        <!-- Delete Report Handler -->
+        <form action="/deletereport" method="post">
+          <input type="hidden" name="iteration" value="{{ iteration }}">
+          <!-- jinja logic delete button should not exist if user doesn't have any posts -->
+          {% if report_exist == true %}
+          <input style="margin-left: 5px" type="submit" name="Delete" value="Delete">
+          {% endif %}
+        </form>
+  </div>
+</div>
+  <!-- Right Side of Page Subscribed Themes -->
+<div class="container split right">
+  <div class="centered">
+    <img src="" alt="">
+    <h3 style="color: red; margin-top: 100px;">{{ no_subs_error }}</h3>
+    <h2>Subscribed Fitness Topics</h2>
+      <figure class="figure">
+        <img src="{{ sub_image_url }}" class="figure-img img-fluid rounded">
+        <figcaption class="figure-caption">Fitness Topic: {{ sub_theme_name }}</figcaption>
+        <figcaption class="figure-caption">Description: {{ sub_description }}</figcaption>
+      </figure>
+      <br>
+        <form action="/management" method="post">
+          <!-- hidden input indicating myposts -->
+          <input type="hidden" name="section" value="subs">
+          <input type="hidden" name="iteration" value="{{ iteration }}">
+          <input type="hidden" name="sub_iteration" value="{{ sub_iteration }}">
+
+          <!-- jinja logic for previous button if its not first iteration -->
+          {% if sub_not_first == true %}
+          <input style="margin-left: 5px" type="submit" name="sub_iterationbutton" value="Previous">
+          {% endif %}
+      
+          {% if sub_not_last == true %}
+          <input style="margin-left: 5px" type="submit" name="sub_iterationbutton" value="Next">
+          {% endif %}
+
+        </form>
+        <br>
+        <br>
+        <!-- Logic for unsubscribe -->
+        <form action="/subscriptions" method="post">
+          <!-- hidden input indicating what page this came from -->
+          <input type="hidden" name="page" value="{{ path_qs }}">
+          <input type="hidden" name="theme_name" value="{{ sub_theme_name }}">
+
+          <!-- jinja logic for subscriptions -->
+          {% if sub_exist == true %}
+          <input style="margin-left: 5px" type="submit" name="subbutton" value="Unsubscribe">
+
+          {% endif %}
+
+        </form>
+  </div>
+</div>
+</div>
+<!-- Manage PAGE END -->
+
+</div>
+<!-- Bootstrap scripts -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous">
+
+</script>
+</body>
+</html>

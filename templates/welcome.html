@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% autoescape true %}
+<html>
+<head>
+	<title>Welcome to FitMe!</title>
+
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="/CSS/welcome.css">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Archivo+Black|Pacifico" rel="stylesheet">
+
+
+</head>
+<body>
+
+<!--START JUMBOTRON  -->
+	<div class="bg" >
+	<div class="container">
+	<div class="jumbotron vertical-center">
+	  <h1 class="display-1 row text-center col-md-12">Welcome!</h1>
+	  <div class="col text-center">
+	  	<p class="lead subtext col-md-12">Discover your true potential. Let's do it together.</p>
+	  	<!-- Jinja logic for login under login handler-->
+	  	<p class="lead"> <a href="{{ url|safe }}" class="btn btn-primary btn-lg" href="#" role="button">Login With Google</a></p>
+		</div>
+	</div>
+	</div>
+</div>
+<!--END JUMBOTRON  -->
+
+<!-- START SCRIPTS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<!-- END SCRIPTS -->
+
+</body>
+</html>
+{% endautoescape %}
